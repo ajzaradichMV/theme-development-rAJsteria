@@ -1,0 +1,37 @@
+/*
+Theme Name: News Trellis Child
+Theme URI: http://intothevoid.me/news-trellis/
+description: A child theme built on the Trellis framework
+Author: Tonton Zaradich
+Author URI: http://intothevoid.me
+Template: mediavine-trellis
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+Text Domain: news
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+@media only screen and (min-width: 1200px) {
+    .latest-header {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 20px 40px;
+    }
+}
+
+.latest-posts-title:after {
+    content: "";
+    display: block;
+    border: solid #000000;
+    border-width: 0 0 1px 0;
+    height: 1px;
+    width: 50%;
+}
+
+.wrapper-latest-header {
+    background: #e7e7e7;
+    
+}
