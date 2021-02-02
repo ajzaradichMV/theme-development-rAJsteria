@@ -3,18 +3,6 @@
 
 
 ?>
-<div class="latest-cards">
-<?php mvt_content_before();
-    // Check if page is not singular, if it's not then we can throw some posts under the featured on the homepage.
-    if (!is_singular()) {
-        if ( have_posts() ) {
-            for ($count_posts = 0; $count_posts < 3; $count_posts++){
-                the_post();
-                    mv_trellis_get_template_part( 'template-parts/article/article-excerpt' );
-                }
-            }
-    } ?>
-</div>
 
 <!-- Main Content Section -->
 <div class="content">

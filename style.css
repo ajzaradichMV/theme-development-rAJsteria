@@ -2,7 +2,7 @@
 Theme Name: News Trellis Child
 Theme URI: http://intothevoid.me/news-trellis/
 description: A child theme built on the Trellis framework
-Author: Tonton Zaradich
+Author: Rach/TonTon
 Author URI: http://intothevoid.me
 Template: mediavine-trellis
 Version: 1.0.0
@@ -11,27 +11,369 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
 Text Domain: news
 */
+span, a, p {
+    font-family: 'Montserrat', sans-serif;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: 'PT Sans', sans-serif;
+}
 
+.screen-reader-text {
+	display: none;
+}
+
+.featured-hero-photo img, .excerpt-photo img {
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
+    #primary-nav {
+        width: 100%;
+        display: block;
+        text-align: left;
+        min-height: 50px;
+        background-color: #2C3D55;
+    }
+}
 @media only screen and (min-width: 1200px) {
-    .latest-header {
+    .latest-header, .latest-cards, .content {
         max-width: 1024px;
         margin: 0 auto;
         padding: 20px 40px;
     }
 }
-
-.latest-posts-title:after {
+.latest-posts-title:after, .news-category-title:after, .widget-title:after {
     content: "";
     display: block;
-    border: solid #000000;
-    border-width: 0 0 1px 0;
+    border: solid #2c3d55;
+    border-width: 0 0 3px 0;
     height: 1px;
+    width: 100%;
+}
+.latest-posts-title, .news-category-title, .widget-title {
+    margin-bottom: 10px;
+    line-height: 19px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'PT Sans';
+}
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+}
+/**NavMenu**/
+#primary-nav ul {
+    min-height: 50px;
+    max-width: 1024px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+#primary-nav li {
+    display: inline-block;
+    list-style-type: none;
+    line-height: 50px;
+    font-size: 14px;
+    height: 100%;
+    padding: 10px 0px;
+}
+#primary-nav li:hover {
+    background-color: #9d9d9d;
+    border: solid #fefefe;
+    border-width: 0 1px;
+    margin: 0 -1px;
+}
+#primary-nav a {
+    text-decoration: none;
+    color: #FEFEFE;
+    padding: 0 15px;
+    text-transform: uppercase;
+	font-family: 'Montserrat';
+}
+#primary-nav li:hover a {
+    color: #2d2d2d;
+}
+/*LatestPostCatWidget*/
+.latest-grid img {
+    width: 100%;
+    height: 100%;
+}
+.latest-grid .excerpt-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+	overflow: hidden;
+}
+.latest-grid .excerpt-post-data, .featured-hero .excerpt-post-data {
+    top: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    padding: 0px 5px;
+    transition: 0.3s all;
+}
+.latest-grid .excerpt-photo {
+	height: 100%;
+}
+.excerpt-post-data p {
+    color: #fefefe;
+}
+.excerpt-container a {
+    color: #fefefe;
+    text-decoration: none;
+}
+.excerpt-post-data h2 {
+    text-align: center;
+}
+.latest-grid .excerpt-container:hover .excerpt-post-data {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(44, 61, 85, 0.9);
+    transition: 0.3s all;
+}
+.featured-hero-photo {
+    position: relative;
+}
+.category-marker {
+    position: absolute;
+    bottom: 0;
+    margin: 0px 0px 20px 10px;
+}
+
+.category-marker span {
+    text-decoration: none;
+    color: #FEFEFE;
+    background-color: #D35269;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 10px;
+	font-family: 'Montserrat';
+	letter-spacing: 0.1px;
+}
+
+/*LatestPostCatWidget*/
+.below-latest-widget-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 10px;
+}
+.news-widget-wrapper h1{
+    padding-top: 10px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+.news-widget-wrapper > div:last-of-type:after {
+    display: none;
+}
+.news-widget-wrapper .category-wrapper > div:last-of-type .latest-post {
+    padding-bottom: 0;
+}
+.news-widget-wrapper img {
+    height: 80px;
+    width: 80px;
+}
+.news-widget-wrapper .latest-post {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    padding: 10px 0px;
+}
+.news-widget-wrapper .latest-post .post-image {
+    grid-column: 1;
+    height: 80px;
+}
+.news-widget-wrapper .latest-post-data {
+    height: auto;
+	position: relative;
+}
+.news-widget-wrapper .latest-post p {
+    grid-column: 2;
+    display: block;
+	margin: 5px 0px;
+}
+.news-widget-wrapper .latest-wrapper:after, .article.excerpt:after {
+    content: '';
+    margin: 0 auto;
+    display: block;
+    border-bottom: 3px solid #F0F0F0;
+    width: 75%;
+}
+.news-widget-wrapper p.post-title {
+    font-weight: 700;
+	font-size: 14px;
+    margin-top: 0;
+}
+.news-widget-wrapper .post-date {
+    opacity: 0.4;
+	font-size: 12px;
+}
+
+.news-widget-wrapper .comment-count {
+    display: inline-block;
+    padding-left: 5px
+}
+.news-widget-wrapper .comments-icon svg {
+    margin-bottom: -4px;
+}
+.news-widget-wrapper .social-wrapper {
+    opacity: 0.4;
+	position: absolute;
+	bottom: 0;
+}
+.category-wrapper > div:last-of-type:after {
+    display: none;
+}
+
+.wrapper-latest-header .featured-hero.excerpt {
+    width: 100%;
+}
+.wrapper-latest-header .featured-hero-container {
+    position: relative;
+}
+.wrapper-latest-header img {
+    display: block;
+}
+.wrapper-latest-header .latest-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+.wrapper-latest-header .latest-grid img {
+    padding-left: 10px;
+}
+.wrapper-latest-header {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+.featured-hero-post-data.excerpt-post-data {
+    opacity: 1;
+    bottom: 20px;
+    top: unset;
+    height: unset;
+    width: calc(100% - 10px);
+	font-size: 12px;
+    z-index: 6;
+    background-color: rgba(44, 61, 85, 0.8)
+}
+.featured-hero-post-data.excerpt-post-data > a, .featured-hero-post-data .featured-hero-excerpt, .featured-hero-post-data .featured-hero-btn {
+    display: none;
+}
+.featured-hero-container .category-marker {
+    margin-bottom: 90px;
+    z-index: 11;
+}
+/** Widget Styles **/
+.below-latest-widget-container .widget, .below-latest-widget-container .widget-container, .sidebar-primary .widget, .sidebar-primary .widget-container, .home #content {
+    background-color: #ffffff;
+	box-shadow: 2px 2px 6px -2px #b1b1b1;
+	padding: 10px;
+	margin: 10px 0px;
+}
+.widget-title {
+	margin: 0 0 10px 0;
+}
+
+/** Content CSS **/
+@media only screen and (min-width: 1024px) {
+    .content-container {
+        max-width: calc(100% - 340px);
+        float: left;
+    }
+    .sidebar-primary {
+        width: 330px;
+		float: right;
+        display: inline-block;
+    }
+}
+.wrapper-content {
+    display: inline-block;
+}
+.article.excerpt p {
+	color: black;
+}
+.article.excerpt p, .article.excerpt h2 a {
+	color: black;
+}
+.article.excerpt a {
+    color: #A7A7A7;
+}
+a.article-read-more {
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+    transition: all 0.2s;
+}
+
+a.article-read-more:hover {
+    color: #2C3D55;
+    transition: all 0.2s;
+}
+
+a.article-read-more:after {
+    display: inline-block;
+    content: '\203A';
+    padding-left: 5px;
+    transition: all 0.2s;
+}
+#content .excerpt-container {
+    margin: 10px 0px;
+}
+.home #content > div:first-of-type .excerpt-container {
+    margin-top: 0px;
+}
+/** Footer **/
+footer.footer {
+    background: #2c3d55;
+    color: #fefefe;
+	padding: 20px;
+}
+.footer-widget-area {
+	padding: 20px;
+}
+
+footer.footer .widget-title {
+    font-size: 14px;
+}
+
+footer.footer .widget-title:after {
+    border-color: #fefefe;
     width: 50%;
 }
 
-.wrapper-latest-header {
-    background: #e7e7e7;
-    
+footer.footer a {
+    color: #a7a7a7;
+    text-decoration: none;
+}
+
+footer.footer ul {
+    list-style-type: none;
+    display: inline-block;
+    padding-left: 0;
+}
+footer.footer li {
+    display: inline-block;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 10px;
+}
+
+.left-footer {
+    grid: 1;
+}
+.middle-footer {
+    grid: 2;
+}
+.right-footer {
+    grid: 3;
+}
+.footer-copy p {
+    text-align: center;
 }
