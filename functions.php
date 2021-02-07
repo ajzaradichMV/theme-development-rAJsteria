@@ -97,13 +97,18 @@ add_action( 'widgets_init', function(){
      register_widget( 'NewsTheme\Latest_Posts_Widget' );
 });
 
-/**
- *
- * Create our 4x3 (1200x900) portrait images.
- *
- */
 
-function trellis_child_portrait_images() {
-	add_image_size('portrait-thumb', 1200, 900, true); // Cropped images for homepage thumbnails so they're portrait :D
+if ( ! is_admin() ) {
+	add_filter( 'the_content', 'post_content_add', 10 );
 }
-add_action( 'after_setup-theme', 'trellis_child_portrait_images');
+
+function post_content_add( $content ) {
+
+	// Don't apply this function on admin pages and home pages.
+	if ( ! is_home() and is_single() ) {
+		return get_template_part( '/template-parts/article/article-meta-singular' ) . $content;
+	} else {
+		return $content;
+	}
+	
+}

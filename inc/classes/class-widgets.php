@@ -76,7 +76,7 @@ class Latest_Posts_Widget extends \WP_Widget {
 			echo '<div class="latest-post">';
 			echo '<div class="post-image"> <img src="' . get_the_post_thumbnail_url( $post, 'thumbnail' ) . '"></div>';
 			echo '<div class="latest-post-data">';
-			echo '<p class="post-title">' . get_the_title( $post ) . '</p>';
+			echo '<a href="' . get_the_permalink( $post ) . '" class="post-title"> ' . get_the_title( $post ) . '</a>';
 
 			if ($instance['post_date'] == 1) {
 				echo '<p class="post-date">' . get_the_date( 'F dS, Y', $post ) . '</p>';
